@@ -27,6 +27,17 @@ public class Main {
         if (!Pattern.matches(OPERATION_REG, operator)) {
             throw new IllegalArgumentException("사칙 연산중 하나만 입력해주세요.");
         }
+
+        int answer = switch (operator) {
+            case "+" -> Integer.parseInt(firstNumber) + Integer.parseInt(secondNumber);
+            case "-" -> Integer.parseInt(firstNumber) - Integer.parseInt(secondNumber);
+            case "*" -> Integer.parseInt(firstNumber) * Integer.parseInt(secondNumber);
+            case "/" -> Integer.parseInt(firstNumber) / Integer.parseInt(secondNumber);
+            default -> 0;
+        };
+
+        System.out.println("결과 : " + answer);
         sc.close();
     }
 }
+
