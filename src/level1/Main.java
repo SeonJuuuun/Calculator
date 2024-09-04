@@ -5,51 +5,79 @@ import java.util.regex.Pattern;
 
 public class Main {
     private static final String OPERATION_REG = "[+\\-*/]";
-    private static final String NUMBER_REG = "^[0-9]*$";
+    private static final String NUMBER_REG = "^[0-9]+$";
 
     public static void main(String[] args) {
         boolean command = true;
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         while (command) {
-            System.out.println("첫 번째 숫자를 입력해주세요.");
-            final String firstNumber = sc.next();
-            if (!Pattern.matches(NUMBER_REG, firstNumber)) {
-                throw new IllegalArgumentException("양의 정수만 입력이 가능합니다.");
-            }
+            System.out.println("첫 번째 숫자를 입력해주세요 !!!");
+            final String firstNumber = getValidNumber(scanner);
 
-            System.out.println("두 번째 숫자를 입력해주세요.");
-            final String secondNumber = sc.next();
-            if (!Pattern.matches(NUMBER_REG, secondNumber)) {
-                throw new IllegalArgumentException("양의 정수만 입력이 가능합니다.");
-            }
+            System.out.println("두 번째 숫자를 입력해주세요 !!!");
+            final String secondNumber = getValidNumber(scanner);
 
             System.out.println("사칙 연산을 입력해주세요.");
-            final String operator = sc.next();
-            if (!Pattern.matches(OPERATION_REG, operator)) {
-                throw new IllegalArgumentException("사칙 연산중 하나만 입력해주세요.");
+            final String operator = getValidOperator(scanner);
+
+            try {
+                int answer = calculate(Integer.parseInt(firstNumber), Integer.parseInt(secondNumber), operator);
+                System.out.println("결과 : " + answer);
+            } catch (IllegalArgumentException e) {
+                System.out.println("에러: " + e.getMessage());
+                continue; 
             }
 
-            int answer = switch (operator) {
-                case "+" -> Integer.parseInt(firstNumber) + Integer.parseInt(secondNumber);
-                case "-" -> Integer.parseInt(firstNumber) - Integer.parseInt(secondNumber);
-                case "*" -> Integer.parseInt(firstNumber) * Integer.parseInt(secondNumber);
-                case "/" -> {
-                    if (Integer.parseInt(secondNumber) == 0) {
-                        throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
-                    }
-                    yield Integer.parseInt(firstNumber) / Integer.parseInt(secondNumber);
-                }
-                default -> 0;
-            };
-
-            System.out.println("결과 : " + answer);
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
-            String ended = sc.next();
+            final String ended = scanner.next();
             if (ended.equalsIgnoreCase("exit")) {
                 command = false;
             }
         }
-        sc.close();
+        scanner.close();
+    }
+
+    private static String getValidNumber(final Scanner scanner) {
+        while (true) {
+            try {
+                String input = scanner.next();
+                if (!Pattern.matches(NUMBER_REG, input)) {
+                    throw new IllegalArgumentException("양의 정수만 입력이 가능합니다.");
+                }
+                return input;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private static String getValidOperator(final Scanner scanner) {
+        while (true) {
+            try {
+                final String operator = scanner.next();
+                if (!Pattern.matches(OPERATION_REG, operator)) {
+                    throw new IllegalArgumentException("유효한 연산자를 입력해주세요. (+, -, *, /)");
+                }
+                return operator;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private static int calculate(final int firstNumber, final int secondNumber, final String operator) {
+        return switch (operator) {
+            case "+" -> firstNumber + secondNumber;
+            case "-" -> firstNumber - secondNumber;
+            case "*" -> firstNumber * secondNumber;
+            case "/" -> {
+                if (secondNumber == 0) {
+                    throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+                }
+                yield firstNumber / secondNumber;
+            }
+            default -> throw new IllegalStateException("Unexpected operator: " + operator);
+        };
     }
 }
