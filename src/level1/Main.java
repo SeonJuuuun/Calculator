@@ -32,7 +32,12 @@ public class Main {
             case "+" -> Integer.parseInt(firstNumber) + Integer.parseInt(secondNumber);
             case "-" -> Integer.parseInt(firstNumber) - Integer.parseInt(secondNumber);
             case "*" -> Integer.parseInt(firstNumber) * Integer.parseInt(secondNumber);
-            case "/" -> Integer.parseInt(firstNumber) / Integer.parseInt(secondNumber);
+            case "/" -> {
+                if (Integer.parseInt(secondNumber) == 0) {
+                    throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+                }
+                yield Integer.parseInt(firstNumber) / Integer.parseInt(secondNumber);
+            }
             default -> 0;
         };
 
@@ -40,4 +45,3 @@ public class Main {
         sc.close();
     }
 }
-
