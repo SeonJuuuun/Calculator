@@ -77,6 +77,7 @@ public class App {
                 }
                 yield firstNumber / secondNumber;
             }
+            default -> throw new IllegalArgumentException("연산자 에러가 발생하였습니다.");
         };
     }
 }
