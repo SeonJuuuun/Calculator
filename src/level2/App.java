@@ -31,6 +31,18 @@ public class App {
                 continue;
             }
 
+            System.out.println("지금까지의 결과 값의 맨 첫 번째를 삭제 하시겠습니까? (YES, NO)");
+            final String command = scanner.next();
+            if (command.equalsIgnoreCase("YES")) {
+                calculator.removeResult();
+            }
+
+            System.out.println("총 연산 결과");
+            final List<Integer> result = calculator.getResult();
+            for (Integer idx : result) {
+                System.out.println(idx);
+            }
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             final String ended = scanner.next();
             if (ended.equalsIgnoreCase("exit")) {

@@ -23,4 +23,12 @@ public class Calculator {
         result.add(answer);
         return answer;
     }
+
+    public void removeResult() {
+        result.remove(0);
+    }
+
+    public List<Integer> getResult() {
+        return result;
+    }
 }
