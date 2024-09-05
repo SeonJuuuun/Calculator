@@ -3,7 +3,7 @@ package level1;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Main {
+public class App {
     private static final String OPERATION_REG = "[+\\-*/]";
     private static final String NUMBER_REG = "^[0-9]+$";
 
@@ -26,7 +26,7 @@ public class Main {
                 System.out.println("결과 : " + answer);
             } catch (IllegalArgumentException e) {
                 System.out.println("에러: " + e.getMessage());
-                continue; 
+                continue;
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
