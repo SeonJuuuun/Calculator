@@ -77,7 +77,6 @@ public class App {
                 }
                 yield firstNumber / secondNumber;
             }
-            default -> throw new IllegalStateException("Unexpected operator: " + operator);
         };
     }
 }
