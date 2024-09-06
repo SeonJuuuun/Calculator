@@ -1,7 +1,7 @@
 - [x] Enum 타입을 활용하여 연산자 정보를 관리한다.
 - [ ] Enum 타입을 ArithmeticCalculator 클래스에 활용한다.
-- [ ] 실수, 즉 double 타입의 값을 전달 받아도 연산이 수행하도록 만들기.
-- [ ] 피연산자를 여러 타입으로 받을 수 있도록 기능을 확장
+- [x] 실수, 즉 double 타입의 값을 전달 받아도 연산이 수행하도록 만들기.
+- [x] 피연산자를 여러 타입으로 받을 수 있도록 기능을 확장
 - [ ] ArithmeticCalculator 클래스 수정 (제네릭)
-- [ ] 저장된 연산 결과들 중 Scanner로 입력받은 값보다 더 큰 결과값 들을 출력
-  - [ ] ArithmeticCalculator 클래스에 위 요구사항을 만족하는 조회 메서드를 구현한다. (Lambda & Stream)
+- [x] 저장된 연산 결과들 중 Scanner로 입력받은 값보다 더 큰 결과값 들을 출력
+  - [x] ArithmeticCalculator 클래스에 위 요구사항을 만족하는 조회 메서드를 구현한다. (Lambda & Stream)
