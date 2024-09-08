@@ -2,6 +2,7 @@ package level3.calculator;
 
 import java.util.ArrayList;
 import java.util.List;
+import level3.exception.AppException;
 import level3.operation.Operation;
 import level3.operation.OperatorType;
 
@@ -9,8 +10,8 @@ public class ArithmeticCalculator<T extends Number> {
 
     private final List<T> results = new ArrayList<>();
 
-    public T calculate(final T firstNumber, final T secondNumber, final String operatorStr) {
-        final Operation<Number> operation = OperatorType.getOperation(operatorStr);
+    public T calculate(final T firstNumber, final T secondNumber, final String operatorStr) throws AppException {
+        final Operation<Number> operation = OperatorType.from(operatorStr);
         final T answer = (T) operation.operate(firstNumber, secondNumber);
         results.add(answer);
         return answer;

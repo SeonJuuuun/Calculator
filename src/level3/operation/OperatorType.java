@@ -1,11 +1,7 @@
-package level3;
+package level3.operation;
 
 import java.util.Arrays;
-import level3.operation.AddOperation;
-import level3.operation.DivideOperation;
-import level3.operation.MultiplyOperation;
-import level3.operation.Operation;
-import level3.operation.SubstractOperation;
+import level3.exception.InvalidOperatorException;
 
 public enum OperatorType {
     ADD("+", new AddOperation()),
@@ -16,20 +12,20 @@ public enum OperatorType {
     private final String operator;
     private final Operation<Number> operation;
 
-    OperatorType(String operator, Operation<Number> operation) {
+    OperatorType(final String operator, final Operation<Number> operation) {
         this.operator = operator;
         this.operation = operation;
     }
 
-    public Operation<Number> getOperation() {
-        return operation;
-    }
-
-    public static Operation<Number> getOperation(final String operator) {
+    public static Operation<Number> from(final String operator) {
         return Arrays.stream(OperatorType.values())
                 .filter(v -> v.operator.equals(operator))
                 .findAny()
                 .map(OperatorType::getOperation)
-                .orElseThrow(() -> new IllegalArgumentException("올바른 연산자를 입력해 주세요."));
+                .orElseThrow(() -> new InvalidOperatorException(operator));
+    }
+
+    public Operation<Number> getOperation() {
+        return operation;
     }
 }
