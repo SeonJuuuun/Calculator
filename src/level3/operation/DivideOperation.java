@@ -2,8 +2,9 @@ package level3.operation;
 
 import level3.exception.DivisionByZeroException;
 
-public class DivideOperation implements Operation<Number>  {
+public class DivideOperation implements Operation<Number> {
 
+    // 나누는 로직
     @Override
     public Number operate(final Number firstNumber, final Number secondNumber) {
         if (secondNumber.intValue() == 0) {

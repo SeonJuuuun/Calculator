@@ -8,8 +8,10 @@ import level3.operation.OperatorType;
 
 public class ArithmeticCalculator<T extends Number> {
 
+    // 결과 값 저장 필드
     private final List<T> results = new ArrayList<>();
 
+    // 입력 값들을 받고 계산하는 로직
     public T calculate(final T firstNumber, final T secondNumber, final String operatorStr) throws AppException {
         final Operation<Number> operation = OperatorType.from(operatorStr);
         final T answer = (T) operation.operate(firstNumber, secondNumber);
@@ -17,6 +19,7 @@ public class ArithmeticCalculator<T extends Number> {
         return answer;
     }
 
+    // 저장된 연산 결과들 중 Scanner로 입력받은 값보다 큰 결과값 들을 찾는 로직
     public List<T> getResultsGreaterThanInputNumbers(final T firstNumber, final T secondNumber) {
         final double max = Math.max(firstNumber.doubleValue(), secondNumber.doubleValue());
         return results.stream()
@@ -24,7 +27,8 @@ public class ArithmeticCalculator<T extends Number> {
                 .toList();
     }
 
-    public List<T> getResults() {
+    // 지금까지 계산 한것 출력 로직
+    public List<T> getHistory() {
         return results;
     }
 }
