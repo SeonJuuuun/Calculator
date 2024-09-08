@@ -3,13 +3,15 @@ package level3.calculator;
 import java.util.ArrayList;
 import java.util.List;
 import level3.operation.Operation;
+import level3.operation.OperatorType;
 
 public class ArithmeticCalculator<T extends Number> {
 
     private final List<T> results = new ArrayList<>();
 
-    public T calculate(final T firstNumber, final T secondNumber, final Operation<T> operation) {
-        final T answer = operation.operate(firstNumber, secondNumber);
+    public T calculate(final T firstNumber, final T secondNumber, final String operatorStr) {
+        final Operation<Number> operation = OperatorType.getOperation(operatorStr);
+        final T answer = (T) operation.operate(firstNumber, secondNumber);
         results.add(answer);
         return answer;
     }
