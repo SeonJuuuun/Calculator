@@ -5,3 +5,4 @@
 - [x] ArithmeticCalculator 클래스 수정 (제네릭)
 - [x] 저장된 연산 결과들 중 Scanner로 입력받은 값보다 더 큰 결과값 들을 출력
   - [x] ArithmeticCalculator 클래스에 위 요구사항을 만족하는 조회 메서드를 구현한다. (Lambda & Stream)
+- [ ] 꼼꼼한 예외처리 하기
