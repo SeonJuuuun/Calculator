@@ -5,4 +5,7 @@
 - [x] ArithmeticCalculator 클래스 수정 (제네릭)
 - [x] 저장된 연산 결과들 중 Scanner로 입력받은 값보다 더 큰 결과값 들을 출력
   - [x] ArithmeticCalculator 클래스에 위 요구사항을 만족하는 조회 메서드를 구현한다. (Lambda & Stream)
-- [ ] 꼼꼼한 예외처리 하기
+- [x] 꼼꼼한 예외처리 하기
+  - [ ] 나눗셈을 할 때 분모가 0이면 DivisionByZeroException 예외가 발생한다.
+  - [ ] 첫 번째 숫자와 두 번째 숫자가 숫자 형식이 아니면 InvalidNumberException 예외가 발생한다.
+  - [ ] 연산자를 입력할 때 올바르지 않은 연산자를 입력하면 InvalidOperatorException 예외가 발생한다.
