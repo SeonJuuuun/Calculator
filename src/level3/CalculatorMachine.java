@@ -17,27 +17,32 @@ public class CalculatorMachine {
 
     public void start() {
         while (true) {
-            // 첫 번째 숫자와 두 번째 숫자 및 연산자 입력 받는 로직
-            final String firstNumberStr = repeat(this::inputFirstNumber);
-            final String secondNumberStr = repeat(this::inputSecondNumber);
-            final String operatorStr = repeat(this::inputOperator);
+            try {
+                // 첫 번째 숫자와 두 번째 숫자 및 연산자 입력 받는 로직
+                final String firstNumberStr = repeat(this::inputFirstNumber);
+                final String secondNumberStr = repeat(this::inputSecondNumber);
+                final String operatorStr = repeat(this::inputOperator);
 
-            // Number 형태로 변환시켜주는 로직
-            final Number firstNumber = parseNumber(firstNumberStr);
-            final Number secondNumber = parseNumber(secondNumberStr);
+                // Number 형태로 변환시켜주는 로직
+                final Number firstNumber = parseNumber(firstNumberStr);
+                final Number secondNumber = parseNumber(secondNumberStr);
 
-            // 입력 값들을 받고 계산하는 로직
-            final Number answer = arithmeticCalculator.calculate(firstNumber, secondNumber, operatorStr);
-            Output.printCalculationResult(answer);
+                // 입력 값들을 받고 계산하는 로직
+                final Number answer = arithmeticCalculator.calculate(firstNumber, secondNumber, operatorStr);
+                Output.printCalculationResult(answer);
 
-            // 저장된 연산 결과들 중 Scanner로 입력받은 값보다 큰 결과값 들을 출력 하는 로직
-            final List<Number> filteredResults = arithmeticCalculator.getResultsGreaterThanInputNumbers(firstNumber,
-                    secondNumber);
-            Output.printFilteredResults(filteredResults);
+                // 저장된 연산 결과들 중 Scanner로 입력받은 값보다 큰 결과값 들을 출력 하는 로직
+                final List<Number> filteredResults = arithmeticCalculator.getResultsGreaterThanInputNumbers(firstNumber,
+                        secondNumber);
+                Output.printFilteredResults(filteredResults);
 
-            // 총 계산 결과를 출력하는 로직
-            final List<Number> history = arithmeticCalculator.getHistory();
-            Output.printAllHistory(history);
+                // 총 계산 결과를 출력하는 로직
+                final List<Number> history = arithmeticCalculator.getHistory();
+                Output.printAllHistory(history);
+            } catch (AppException e) {
+                System.out.println(e.getMessage());
+                start();
+            }
 
             // 다시 계산할건지 물어보는 로직
             final String ended = inputEnded();
