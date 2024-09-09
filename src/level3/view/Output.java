@@ -8,7 +8,7 @@ public class Output {
     /*
     클래스가 모든 메서드를 static으로 선언한 유틸리티 클래스이므로
     인스턴스를 생성할 필요가 없으므로 생성자를 private로 만들어 인스턴스를 만들 수 없게 하는 로직
-     */
+    */
     private Output() {
     }
 
@@ -36,7 +36,6 @@ public class Output {
     public static void printCalculationResult(final Number answer) {
         System.out.println("-----------------");
         System.out.println("결과 : " + answer);
-        System.out.println("-----------------");
     }
 
     // 저장된 연산 결과들 중 Scanner로 입력받은 값보다 큰 결과값 들을 출력하는 메세지

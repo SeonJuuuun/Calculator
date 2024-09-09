@@ -11,7 +11,7 @@ public class Input {
     /*
     클래스가 모든 메서드를 static으로 선언한 유틸리티 클래스이므로
     인스턴스를 생성할 필요가 없으므로 생성자를 private로 만들어 인스턴스를 만들 수 없게 하는 로직
-     */
+    */
     private Input() {
     }
 
@@ -30,7 +30,6 @@ public class Input {
         isValidNumber(input);
         return input;
     }
-
 
     // 연산자를 입력받는 로직
     public static String readOperator() {
@@ -55,7 +54,7 @@ public class Input {
     }
 
     // 올바른 연산자인지 확인하는 메서드
-    private static void isValidOperator(String operator) {
+    private static void isValidOperator(final String operator) {
         if (!operator.matches("[+\\-*/]")) {
             throw new InvalidOperatorException(operator);
         }

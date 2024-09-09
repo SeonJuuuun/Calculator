@@ -4,7 +4,7 @@ public class AddOperation implements Operation<Number> {
 
     // 더하는 로직
     @Override
-    public Number operate(Number firstNumber, Number secondNumber) {
+    public Number operate(final Number firstNumber, final Number secondNumber) {
         if (firstNumber instanceof Double || secondNumber instanceof Double) {
             return firstNumber.doubleValue() + secondNumber.doubleValue();
         } else {
