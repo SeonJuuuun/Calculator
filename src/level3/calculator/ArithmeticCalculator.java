@@ -12,7 +12,7 @@ public class ArithmeticCalculator<T extends Number> {
     private final List<T> results = new ArrayList<>();
 
     // 입력 값들을 받고 계산하는 로직
-    public T calculate(final T firstNumber, final T secondNumber, final String operatorStr) throws AppException {
+    public T calculate(final T firstNumber, final T secondNumber, final String operatorStr) {
         final Operation<Number> operation = OperatorType.from(operatorStr);
         final T answer = (T) operation.operate(firstNumber, secondNumber);
         results.add(answer);
